@@ -1,0 +1,60 @@
+name = "Andry"
+surname = "Kravcik"
+age = 15
+hello = 'Hello world!'
+date = 15.09
+
+print(hello)
+print(name)
+print(surname)
+print(age)
+
+print(type(hello))
+print(type(name))
+print(type(surname))
+print(type(age))
+lst_type = [hello,name,surname,age,date]
+
+type_count = {}
+for item in lst_type:
+    item_type = type(item)
+    if item_type in type_count:
+        type_count[item_type] += 1
+    else:
+        type_count[item_type] = 1
+
+for item_type, count in type_count.items():
+      print(f"Тип {item_type}: {count} разів")
+
+least_common_type = None
+least_common_count = float('inf')
+
+for item_type, count in type_count.items():
+    if count < least_common_count:
+        least_common_count = count
+        least_common_type = item_type
+
+print(f"Тип, який зустрічається найменше число разів: {least_common_type}")
+print(f"Кількість появ цього типу: {least_common_count}")
+
+new_lst_type = []
+for item in lst_type:
+    if type(item) != least_common_type:
+        new_lst_type.append(item)
+
+first_type = None
+only_one_type = True
+
+for item in new_lst_type:
+    if first_type is None:
+        first_type = type(item)
+    elif type(item) != first_type:
+        only_one_type = False
+        break
+if only_one_type:
+    print("good")
+else:
+    print("Залишилося більше одного типу")
+
+
+
